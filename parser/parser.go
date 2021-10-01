@@ -14,6 +14,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 
 	"k8s.io/apimachinery/pkg/util/yaml"
@@ -143,4 +144,25 @@ func GetLatestTagFromRepository(repository *git.Repository) (string, error) {
 	return latestTagName, nil
 }
 
+func (p *Parser) GitRevert() {
+
+	cmd := exec.Command("git", "revert", "HEAD")
+	stdout, err := cmd.Output()
+
+	if err != nil {
+		//fmt.Println(err.Error())
+		return
+	}
+
+	fmt.Println(stdout)
+	cmd = exec.Command("git", "push", "main")
+	stdout, err = cmd.Output()
+
+	if err != nil {
+		//fmt.Println(err.Error())
+		return
+	}
+
+	//fmt.Println(stdout)
+}
 

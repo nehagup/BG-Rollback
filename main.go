@@ -23,6 +23,8 @@ func main() {
 		log.Println(err)
 	}
 
-	fmt.Print(p.CheckLatestTag(latestTag))
-
+	if(p.CheckLatestTag(latestTag)) {
+		fmt.Print("Reverting Changes to last stable release tag")
+		p.GitRevert()
+	}
 }

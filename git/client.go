@@ -44,6 +44,6 @@ func (gc *GitClient) GetRepoClone(user string, repo string, dir string) (*git.Re
 		Progress: os.Stdout,
 		Auth: &http.BasicAuth{
 			Username: user,                                       // anything except an empty string
-			Password: "e34543006f798c77b85d3de3bf2ea693eccf0731", //TODO auth
+			Password: "", //TODO auth
 		}})
 }
